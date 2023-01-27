@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <%= tday %>
+    </h1>
+    <ul>
+        <% for(var i=0; i < tolist.length; i++) { %>
+            <form action="/delete" method="post">
+                <input type="checkbox" name="work" value="<%=tolist[i]._id%>" onchange="this.form.submit()" id="ckbx">
+                <input type="hidden" name="tag" value="<%= tday %>">
+                <li>
+                    <%= tolist[i].name %>
+                </li>
+            </form>
+            <% } %>
+    </ul>
+    <form action="/" method="post" class="secf">
+        <input type="text" name="thisitem" id = "txtbx">
+        <button type="submit" name="list" value="<%=tday%>"> Add</button>
+    </form>
+</body>
+
+</html>
